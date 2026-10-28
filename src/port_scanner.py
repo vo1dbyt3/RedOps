@@ -5,7 +5,7 @@ import json
 from logs import port_scanner_saved_reports
 from termcolor import colored
 
-json_file = "/home/eyaddoo/vscode/python/RedOps/data/reports.json"
+json_file = "../src/data/reports.json"
 opened_ports = []
 
 def port_scanning(target, port):
@@ -66,5 +66,3 @@ def scanning():
     print()
     print(colored("Scan completed.", "cyan"))
     time.sleep(3)
-
-# scanning()

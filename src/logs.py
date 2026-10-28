@@ -2,13 +2,13 @@ import json
 import os
 
 def load_reports():
-    reports_file = "/home/eyaddoo/vscode/python/RedOps/data/reports.json"
+    reports_file = "../src/data/reports.json"
     with open(reports_file, "r") as file:
         json.load(file)
 
 
 def port_scanner_saved_reports(targets, ports):
-    reports_file = "/home/eyaddoo/vscode/python/RedOps/data/reports.json"
+    reports_file = "../src/data/reports.json"
     data = {"Target": targets, "Ports": [ports]}
     written_data = json.dumps(data, indent=4)
 
@@ -17,7 +17,7 @@ def port_scanner_saved_reports(targets, ports):
 
 
 def recon_saved_reports(recon_id):
-    reports_file = "/home/eyaddoo/vscode/python/RedOps/data/reports.json"
+    reports_file = "../src/data/reports.json"
     tool = ""
 
     if recon_id == 1:
@@ -34,7 +34,7 @@ def recon_saved_reports(recon_id):
 
 
 def content_discovery_saved_reports(hostname, endpoints):
-    reports_file = "/home/eyaddoo/vscode/python/RedOps/data/reports.json"
+    reports_file = "../src/data/reports.json"
     data = {"Hostname": hostname, "Endpoints": [endpoints]}
     written_data = json.dumps([data], indent=4)
 

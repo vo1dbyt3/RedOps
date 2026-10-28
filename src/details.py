@@ -73,5 +73,3 @@ def details_note():
         except:
             print()
             print("Oops... Something went wrong" "\n" "Please try again")
-
-# details_note()

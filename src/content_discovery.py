@@ -1,10 +1,10 @@
 import socket
 import requests
 from termcolor import colored
-from logs import content_discovery_saved_reports, load_reports
+# from logs import content_discovery_saved_reports, load_reports
 
 def discovering():
-    wordlists_path = "/home/eyaddoo/vscode/python/RedOps/wordlists/wordlists.txt"
+    wordlists_path = "/src/wordlists/wordlists.txt"
     print("=" * 15, "Web Endpoints Discovery", "=" * 15)
 
     try:
@@ -12,28 +12,35 @@ def discovering():
         socket.gethostbyname(hostname)
 
         with open(wordlists_path, "r") as file:
-            print(colored("Processing...", "magenta"))
+            print(colored(f"Scanning file...", "magenta"))
 
-            for i, words in enumerate(file, start=1):
+            for words in file:
                 endpoints = "https://" + hostname + "/" + words.strip()
-                response = requests.get(endpoints)
+                response = requests.get(endpoints, timeout=5, allow_redirects=True)
 
                 if response.status_code == 401:
-                    print(colored(f"{i}/4756: Unauthorized {endpoints}", "yellow"))
+                    print(colored(f"[-] 401 Unauthorized: {endpoints}", "yellow"))
                 elif response.status_code == 403:
-                    print(colored(f"{i}/4756: Forbidden {endpoints}", "orange"))
+                    print(colored(f"[-] 403 Forbidden: {endpoints}", "red"))
                 elif response.status_code == 200:
-                    print(colored(f"{i}/4756: Found {endpoints}", "green"))
-                    content_discovery_saved_reports(hostname, endpoints)
-                    load_reports()
-
+                    print(colored(f"[+] 200 Found: {endpoints}", "green"))
+                    # content_discovery_saved_reports(hostname, endpoints)
+                    # load_reports()
+                elif response.status_code == "301":
+                    print(colored(f"[+] 301 Redirected: {endpoints}", "blue"))
+                elif response.status_code == "302":
+                    print(colored(f"[+] 302 Found: {endpoints}", "light_blue"))
+ 
         print()
         print(colored("Discovering Completed", "cyan"))
         
     except socket.gaierror:
         print(f"'{hostname}' was not found")
-    except:
-        print()
-        print("Oops... Something went wrong please try again")
+    except KeyboardInterrupt:
+        print("\nOops... Keyboard interrupt was found")
+    except requests.exceptions.RequestException:
+        pass
+    except FileNotFoundError:
+        print(f"Wordlists file not found at {wordlists_path}")
 
-# discovering()
+discovering()
