@@ -1,10 +1,7 @@
 import socket
 import time
-import os
-import json
 from termcolor import colored
 
-json_file = "/src/data/reports.json"
 opened_ports = []
 
 def port_scanning(target, port):
@@ -38,8 +35,7 @@ def scanning():
         print(colored("Invalid IPv4 address.", "red"))
         return
 
-    print()
-    print(colored(f"Target: {target}", "red"))
+    print(colored(f"\nTarget: {target}", "red"))
     print(colored("PORT       STATE   SERVICE", "yellow"))
 
     for port in range(1, 1001):
@@ -48,6 +44,5 @@ def scanning():
     if opened_ports == []:
         print(colored("No Opened Ports", "blue"))
 
-    print()
-    print(colored("Scan completed.", "cyan"))
+    print(colored("\nScan completed.", "cyan"))
     time.sleep(3)
