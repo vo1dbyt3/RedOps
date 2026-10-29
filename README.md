@@ -38,7 +38,7 @@ cd RedOps
 ### 3. Install dependencies
 
 ```bash
-pip insatll -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 4. Run RedOps
