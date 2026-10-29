@@ -3,7 +3,7 @@ import requests
 from termcolor import colored
 
 def discovering():
-    wordlists_path = "/src/wordlists/wordlists.txt"
+    wordlists_path = "/wordlists/wordlists.txt"
     print("=" * 15, "Web Endpoints Discovery", "=" * 15)
 
     try:

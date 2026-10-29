@@ -1,8 +1,6 @@
 import socket
 import time
 import subprocess
-from termcolor import colored
-
 
 def dns():
     try:
@@ -39,7 +37,7 @@ def validate_target():
         try:
             hostname = input("Enter hostname: ")
             socket.gethostbyaddr(hostname)
-            print(f"'{hostname}'was validated and found successfully!")
+            print(f"'{hostname}' was validated and found successfully!")
         except socket.gaierror:
             print(f"'{hostname}' was not found")
         except:
