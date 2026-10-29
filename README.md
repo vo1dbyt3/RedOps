@@ -40,6 +40,8 @@ cd RedOps
 ```bash
 pip install -r requirements.txt
 ```
+- If pip doesn't work, please run inside a venv (virtual environment)
+
 
 ### 4. Run RedOps
 

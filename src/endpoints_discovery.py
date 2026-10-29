@@ -1,9 +1,10 @@
 import socket
 import requests
 from termcolor import colored
+from pathlib import Path
 
 def discovering():
-    wordlists_path = "/wordlists/wordlists.txt"
+    wordlists_path = Path(__file__).resolve().parent.parent / "src" / "wordlists" / "wordlists.txt"
     print("=" * 15, "Web Endpoints Discovery", "=" * 15)
 
     try:

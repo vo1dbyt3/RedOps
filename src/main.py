@@ -1,7 +1,7 @@
 from menu import show_menu
 from recon import Reconnaissance
 from port_scanner import scanning
-from content_discovery import discovering
+from endpoints_discovery import discovering
 from details import details_note
 import time
 
