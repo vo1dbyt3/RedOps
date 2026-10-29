@@ -1,7 +1,6 @@
 import socket
 import requests
 from termcolor import colored
-# from logs import content_discovery_saved_reports, load_reports
 
 def discovering():
     wordlists_path = "/src/wordlists/wordlists.txt"
@@ -24,8 +23,6 @@ def discovering():
                     print(colored(f"[-] 403 Forbidden: {endpoints}", "red"))
                 elif response.status_code == 200:
                     print(colored(f"[+] 200 Found: {endpoints}", "green"))
-                    # content_discovery_saved_reports(hostname, endpoints)
-                    # load_reports()
                 elif response.status_code == "301":
                     print(colored(f"[+] 301 Redirected: {endpoints}", "blue"))
                 elif response.status_code == "302":
@@ -42,5 +39,3 @@ def discovering():
         pass
     except FileNotFoundError:
         print(f"Wordlists file not found at {wordlists_path}")
-
-discovering()

@@ -2,10 +2,9 @@ import socket
 import time
 import os
 import json
-from logs import port_scanner_saved_reports
 from termcolor import colored
 
-json_file = "../src/data/reports.json"
+json_file = "/src/data/reports.json"
 opened_ports = []
 
 def port_scanning(target, port):
@@ -45,20 +44,6 @@ def scanning():
 
     for port in range(1, 1001):
         port_scanning(target, port)
-
-    if os.path.getsize(json_file) == 0:
-        port_scanner_saved_reports(target, opened_ports)
-    else:
-        with open(json_file, "r") as file:
-            existing = json.load(file)
-
-        if not isinstance(existing, dict):
-            existing = {}
-
-        existing.update({"Ports": opened_ports, "Target": target})
-
-        with open(json_file, "w") as file:
-            json.dump(existing, file, indent=2)
 
     if opened_ports == []:
         print(colored("No Opened Ports", "blue"))

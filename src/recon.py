@@ -1,8 +1,8 @@
 import socket
 import time
 import subprocess
-from logs import recon_saved_reports
 from termcolor import colored
+
 
 def dns():
     try:
@@ -19,6 +19,7 @@ def dns():
             "Resolved IP": None,
             "Status": "Failed"
         }
+
 
 def validate_target():
     print("=" * 15)
@@ -46,13 +47,12 @@ def validate_target():
     else:
         print("Invalid choice")
 
+
 def web_headers():
     url = input("Enter URL: ")
     headers = subprocess.run(["curl", "-I", url])
     print(headers)
 
-def unknown3():
-    pass
 
 def Reconnaissance():
     print("=" * 15, "Target Reconnaissance", "=" * 15)
@@ -63,17 +63,13 @@ def Reconnaissance():
     choice = str(input("Service?: "))
 
     if choice == "1":
-        recon_id_1 = 1
         print(dns())
-        recon_saved_reports(recon_id_1)
     elif choice == "2":
-        recon_id_2 = 2
         validate_target()
-        recon_saved_reports(recon_id_2)
     elif choice == "3":
-        recon_id_3 = 3
         web_headers()
-        recon_saved_reports(recon_id_3)
     else:
         print("Enter a valid choice")
         time.sleep(1.5)
+
+Reconnaissance()

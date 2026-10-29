@@ -1,4 +1,4 @@
-# 🔴 RedOps
+# 🔴 RedOps v1
 
 **RedOps** is a Python-based cybersecurity toolkit designed to bring essential reconnaissance and network utilities together in one command-line interface.
 
@@ -9,9 +9,8 @@ The project is built as a hands-on learning experience to improve my Python prog
 - **DNS Lookup** — Resolve domain names to IP addresses.
 - **Target Validation** — Validate and identify IP addresses or hostnames.
 - **Endpoint Discovery** — Discover accessible web endpoints using a wordlist.
-- **HTTP Status Detection** — Identify responses such as `200 OK`, `401 Unauthorized`, and `403 Forbidden`.
+- **HTTP Status Detection** — Identify responses such as `200 OK`, `401 Unauthorized`, `403 Forbidden`, `301 Redirected`, and `302 Found`.
 - **Interactive CLI Menu** — Navigate between available tools through a simple terminal interface.
-- **Report Storage** — Planned functionality for storing and managing scan results.
 
 ## 🛠️ Built With
 
@@ -39,13 +38,7 @@ cd RedOps
 ### 3. Install dependencies
 
 ```bash
-python3 -m pip install requests
-```
-
-If you use `termcolor` in your current version, install it as well:
-
-```bash
-python3 -m pip install termcolor
+pip insatll -r requirements.txt
 ```
 
 ### 4. Run RedOps
@@ -69,6 +62,7 @@ Available operations depend on the current development version.
 RedOps is intended for educational purposes and authorized security testing.
 
 Only scan systems you own or have explicit permission to test. Unauthorized scanning or testing may violate applicable laws or service policies.
+
 
 ## ⚠️ Note:
 

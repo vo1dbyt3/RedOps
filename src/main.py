@@ -3,11 +3,7 @@ from recon import Reconnaissance
 from port_scanner import scanning
 from content_discovery import discovering
 from details import details_note
-from termcolor import colored
 import time
-import os
-
-file_path = "/home/eyaddoo/vscode/python/RedOps/data/reports.json"
 
 def main():
     operating = True
@@ -25,21 +21,11 @@ def main():
                 scanning()
             elif choice == "3":
                 time.sleep(1)
-                discovering()
+                discovering()           
             elif choice == "4":
                 time.sleep(1)
-
-                if os.path.getsize(file_path) == 0:
-                    print(colored("No available data", "red"))
-                else:
-                    with open(file_path, "r") as file:
-                        contents = file.read()
-                        print(contents)
-                        
-            elif choice == "5":
-                time.sleep(1)
                 details_note()
-            elif choice == "6":
+            elif choice == "5":
                 operating = False
             else:
                 print("Please enter a valid operation")
