@@ -32,8 +32,10 @@ def main():
                 print()
                 time.sleep(1.5)
     except:
-        print()
-        print("Oops... Something went wrong" "\n" "Please try operating once again")
+        print("\nOops... Something went wrong" "\n" "Please try operating once again")
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except ModuleNotFoundError:
+        print("\n Please install dependencies or run inside a venv ")
