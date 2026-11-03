@@ -1,5 +1,6 @@
 import socket
 import time
+from itertools import count
 from termcolor import colored
 
 opened_ports = []
@@ -38,11 +39,16 @@ def scanning():
     print(colored(f"\nTarget: {target}", "red"))
     print(colored("PORT       STATE   SERVICE", "yellow"))
 
-    for port in range(1, 1001):
-        port_scanning(target, port)
+    for port in count(1):
+        if port == 1001:
+            break
+        else:
+            port_scanning(target, port)
 
-    if opened_ports == []:
+    if not opened_ports:
         print(colored("No Opened Ports", "blue"))
 
     print(colored("\nScan completed.", "cyan"))
     time.sleep(3)
+
+scanning()
