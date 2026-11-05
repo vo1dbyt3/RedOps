@@ -1,9 +1,26 @@
 import socket
 import time
+import logging
+from pathlib import Path
 from itertools import count
 from termcolor import colored
 
+# logs
+logs_file = Path(__file__).resolve().parent.parent / "logs" / "scanning.log"
+
+logger = logging.getLogger("Port Scanner")
+file_h = logging.FileHandler(logs_file)
+
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+file_h.setFormatter(formatter)
+
+logger.addHandler(file_h)
+logger.setLevel(logging.INFO)
+
+
 opened_ports = []
+
+# port scanning codes
 
 def port_scanning(target, port):
     try:
@@ -22,7 +39,9 @@ def port_scanning(target, port):
 
     except (socket.gaierror, OSError) as error:
         print(colored(f"Error scanning {target}:{port}: {error}", "red"))
+        logger.error(f"Error scanning {target}:{port}:{error}")
 
+# scanning
 
 def scanning():
     global target, port
@@ -34,8 +53,10 @@ def scanning():
         socket.inet_aton(target)
     except OSError:
         print(colored("Invalid IPv4 address.", "red"))
+        logger.error("Invalid IPv4 address")
         return
 
+    logger.info(f"Scanning {target}")
     print(colored(f"\nTarget: {target}", "red"))
     print(colored("PORT       STATE   SERVICE", "yellow"))
 
@@ -47,8 +68,8 @@ def scanning():
 
     if not opened_ports:
         print(colored("No Opened Ports", "blue"))
+        logger.info(f"No opened ports on {target}")
 
     print(colored("\nScan completed.", "cyan"))
+    logger.info("Scan Completed")
     time.sleep(3)
-
-scanning()
