@@ -45,11 +45,10 @@ def discovering():
                     print(colored(f"[+] 301 Redirected: {endpoints}", "blue"))
                     logger.info(f"Redirected: '{endpoints}'")
                 elif response.status_code == 302:
-                    print(colored(f"[+] 302 Found: {endpoints}", "light_blue"))
+                    print(colored(f"[+] 302 Found & Temporarily Moved: {endpoints}", "light_blue"))
                     logger.info(f"Found & Temporarily Moved: '{endpoints}'")
- 
-        print()
-        print(colored("Discovering Completed", "cyan"))
+
+        print(colored("\nDiscovering Completed", "cyan"))
         logger.info(f"Discovering '{hostname}' endpoints completed")
         
     except socket.gaierror:
@@ -64,5 +63,3 @@ def discovering():
     except FileNotFoundError:
         print(f"Wordlists file not found at {wordlists_path}")
         logger.error(f"'{wordlists_path}' doesn't exist")
-
-discovering()

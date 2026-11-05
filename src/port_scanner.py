@@ -20,8 +20,8 @@ logger.setLevel(logging.INFO)
 
 opened_ports = []
 
-# port scanning codes
 
+# port scanning codes
 def port_scanning(target, port):
     try:
         service = socket.getservbyport(port, "tcp")
@@ -42,7 +42,6 @@ def port_scanning(target, port):
         logger.error(f"Error scanning {target}:{port}:{error}")
 
 # scanning
-
 def scanning():
     global target, port
 

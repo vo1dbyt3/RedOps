@@ -17,6 +17,7 @@ file_h.setFormatter(formatter)
 logger.addHandler(file_h)
 logger.setLevel(logging.INFO)
 
+#DNS Resolver
 def dns():
     try:
         targetDomain = input("Enter domain: ")
@@ -35,7 +36,7 @@ def dns():
             "Status": "Failed"
         }
 
-
+#Target validation
 def validate_target():
     print("=" * 15)
     print("[1] IP | [2] Host name")
@@ -69,7 +70,7 @@ def validate_target():
     else:
         print("Invalid choice")
 
-
+#Web headers
 def web_headers():
     url = input("Enter URL: ")
     headers = subprocess.run(["curl", "-I", url], capture_output=True, text=True)
